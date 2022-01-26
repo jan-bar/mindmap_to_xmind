@@ -1,4 +1,4 @@
-## mindmap转换为xmind
+## mindmap和xmind互相转换
 
 在网上找到了2个库,一个是官方原版,适用python2  
 https://github.com/xmindltd/xmind-sdk-python  
@@ -8,7 +8,7 @@ https://github.com/jmoraleda/xmind-sdk-python3
 本项目是将`xmind-sdk-python3/xmind`复制到`xmind`来使用,  
 也可以`cd`到对应目录执行`python setup.py install`安装后使用。  
 
-## 使用方法
+## 有道云笔记转xmind
 首先找到有道云笔记的名称,如下图所示文件名为`测试xmind.mindmap`  
 
 ![](youdao001.png)
@@ -26,6 +26,10 @@ https://github.com/jmoraleda/xmind-sdk-python3
 查看效果
 
 ![](youdao003.png)
+
+## xmind转有道云笔记
+这一块我用go语言实现，因为xmind实际就是一个zip压缩包，只需要解析其中content.xml然后生成有道云笔记的json就可以。  
+然后将结果覆盖有道云笔记已经生成的文件，最好在有道云笔记中编辑一下，触发保存功能。
 
 ## 总结
 有道云笔记将脑图导出为xmind是会员功能,我也不知道有道云笔记的导出和我这里的转换有啥不一样,能凑合用就行。
