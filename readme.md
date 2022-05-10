@@ -8,7 +8,7 @@ https://github.com/jmoraleda/xmind-sdk-python3
 本项目是将`xmind-sdk-python3/xmind`复制到`xmind`来使用,  
 也可以`cd`到对应目录执行`python setup.py install`安装后使用。  
 
-## 有道云笔记转xmind
+## ~~有道云笔记转xmind,新版不适用~~
 首先找到有道云笔记的名称,如下图所示文件名为`测试xmind.mindmap`  
 
 ![](youdao001.png)
@@ -27,9 +27,39 @@ https://github.com/jmoraleda/xmind-sdk-python3
 
 ![](youdao003.png)
 
+## 新版有道云笔记转xmind
+我用的是`7.0.11`版本的有道云笔记，此时无法用`everything`找到文件名
+
+通过有道云笔记设置，如下图所示可以打开配置文件夹
+
+![](youdao004.png)
+
+然后再找到有道云笔记的数据库文件`xxx.db`
+
+![](youdao005.png)
+
+然后执行如下命令可以将所有`%.mindmap`转换到`save.xmind`中  
+可以看到我用了sql通配符`%`,因此下面会将所有有道脑图转换到一个xmind中
+
+`python mindmap_new.py "C:\Users\xxx\AppData\Roaming\ynote-desktop\your_name@163.com\ynote-data\your_name@163.com.db" "%.mindmap" save.xmind`
+
+### **特别注意**
+没有在有道云笔记中查看过的脑图，本地是不会生成`mindmap`文件！  
+所以看到上面的结果没有转换你要的脑图，只需要在有道云笔记中打开查看一次即可
+
 ## xmind转有道云笔记
 这一块我用go语言实现，因为xmind实际就是一个zip压缩包，只需要解析其中content.xml然后生成有道云笔记的json就可以。  
 然后将结果覆盖有道云笔记已经生成的文件，最好在有道云笔记中编辑一下，触发保存功能。
+
+下面是将`save.xmind`标题为`test.mindmap`的xmind保存为`xxx.mindap`文件中
+
+`go run golang\main.go save.xmind xxx.mindap test.mindmap`
+
+如果不带上最后一个参数则只会转换第一个sheet
+
+`go run golang\main.go save.xmind xxx.mindap`
+
+将`xxx.mindap`替换上面python中的文件，然后在有道云笔记中简单修改一下再保存就可以同步到服务器上了。
 
 ## 总结
 有道云笔记将脑图导出为xmind是会员功能,我也不知道有道云笔记的导出和我这里的转换有啥不一样,能凑合用就行。
