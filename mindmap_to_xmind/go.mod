@@ -3,7 +3,7 @@ module mindmap
 go 1.20
 
 require (
-	github.com/jan-bar/xmind v1.0.5
+	github.com/jan-bar/xmind v1.0.6
 	modernc.org/sqlite v1.21.0
 )
 

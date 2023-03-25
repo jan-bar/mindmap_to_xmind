@@ -17,13 +17,29 @@ import (
 
 func main() {
 	db := flag.String("db", "", "db path")
+	file := flag.String("file", "", "mindmap file path")
 	title := flag.String("title", "", "mindmap title")
 	dst := flag.String("dst", "save.xmind", "save xmind path")
 	flag.Parse()
 
-	mp, err := getPathFromDB(*db, *title)
-	if err != nil {
-		log.Fatalln(err)
+	var (
+		mp  = map[string]string{}
+		err error
+	)
+	if *file != "" {
+		fa, err := filepath.Glob(*file)
+		if err != nil {
+			log.Fatalln(err)
+		}
+		// 允许目录通配符,一个字符串匹配多个文件
+		for _, v := range fa {
+			mp[filepath.Base(v)] = v
+		}
+	} else {
+		mp, err = getPathFromDB(*db, *title)
+		if err != nil {
+			log.Fatalln(err)
+		}
 	}
 
 	sheet := make([]*xmind.Topic, 0, len(mp))
@@ -64,7 +80,7 @@ func youDao(src, title string) (*xmind.Topic, error) {
 	}
 
 	// 设置工作簿名称和中心主题名称,以及格式为逻辑图向右
-	st.UpSheet(title, title, xmind.StructLogicRight)
+	st.UpSheet(title, "", xmind.StructLogicRight)
 	return st, nil
 }
 

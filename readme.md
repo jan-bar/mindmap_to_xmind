@@ -54,6 +54,8 @@ https://github.com/jmoraleda/xmind-sdk-python3
 
 执行命令: `.\mindmap.exe -db "C:\Users\xxx\AppData\Roaming\ynote-desktop\your_name@163.com\ynote-data\your_name@163.com.db" -title "%.mindmap" -dst "save.xmind"`
 
+转换单个文件: `.\mindmap.exe -file "C:\Users\xxx\AppData\Roaming\ynote-desktop\your_name@163.com\ynote-data\file\C\xxx" -dst "save.xmind"`
+
 源码和方案都有了,后面有道云笔记官方再怎么变化方案,相信大家都有办法了
 
 ### **特别注意**
