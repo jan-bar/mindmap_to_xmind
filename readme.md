@@ -43,6 +43,17 @@ https://github.com/jmoraleda/xmind-sdk-python3
 
 `python mindmap_new.py "C:\Users\xxx\AppData\Roaming\ynote-desktop\your_name@163.com\ynote-data\your_name@163.com.db" "%.mindmap" save.xmind`
 
+## 基于go语言编译可执行程序版本
+最近有需求要可执行程序,正好验证我之前的[xmind](https://github.com/jan-bar/xmind)库
+
+最新版`7.2.5`太鸡贼了,数据库里面`entryPath`列现在全是null了,不过我还是有方案
+
+可以查看这个go语言版本[main.go](mindmap_to_xmind/main.go),可执行程序也提交到仓库了
+
+提供两个版本: [window](mindmap_to_xmind/mindmap.exe),[linux](mindmap_to_xmind/mindmap.linux)
+
+源码和方案都有了,后面有道云笔记官方再怎么变化方案,相信大家都有办法了
+
 ### **特别注意**
 没有在有道云笔记中查看过的脑图，本地是不会生成`mindmap`文件！  
 所以看到上面的结果没有转换你要的脑图，只需要在有道云笔记中打开查看一次即可
