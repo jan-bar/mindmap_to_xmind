@@ -12,7 +12,7 @@ import (
 
 	"github.com/jan-bar/xmind"
 
-	_ "modernc.org/sqlite"
+	_ "github.com/mattn/go-sqlite3"
 )
 
 func main() {
@@ -74,7 +74,12 @@ func youDao(src, title string) (*xmind.Topic, error) {
 	}
 
 	// 有道云笔记思维导图,符合数组形式的结构,用自定义类型直接就可以转换
-	st, err := xmind.LoadCustom([]byte(node.Nodes), "id", "topic", "parentid", "isroot")
+	st, err := xmind.LoadCustom([]byte(node.Nodes), map[string]string{
+		xmind.CustomKeyId:       "id",
+		xmind.CustomKeyTitle:    "topic",
+		xmind.CustomKeyParentId: "parentid",
+		xmind.CustomKeyIsRoot:   "isroot",
+	})
 	if err != nil {
 		return nil, err
 	}
@@ -105,7 +110,7 @@ func getPathFromDB(p, title string) (map[string]string, error) {
 		return nil, err
 	}
 
-	db, err := sql.Open("sqlite", p)
+	db, err := sql.Open("sqlite3", p)
 	if err != nil {
 		return nil, err
 	}

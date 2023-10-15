@@ -50,7 +50,7 @@ https://github.com/jmoraleda/xmind-sdk-python3
 
 可以查看这个go语言版本[main.go](mindmap_to_xmind/main.go),可执行程序也提交到仓库了
 
-提供两个版本: [window](mindmap_to_xmind/mindmap.exe),[linux](mindmap_to_xmind/mindmap.linux)
+提供两个版本: [window64](mindmap_to_xmind/mindmap_x64.exe),[window32](mindmap_to_xmind/mindmap_x86.exe),[linux](mindmap_to_xmind/mindmap.linux)
 
 执行命令: `.\mindmap.exe -db "C:\Users\xxx\AppData\Roaming\ynote-desktop\your_name@163.com\ynote-data\your_name@163.com.db" -title "%.mindmap" -dst "save.xmind"`
 
